@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: gray;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-sizing: border-box;
+            margin: 20px;
+        }
+        .login-container h2 {
+            margin: 0 0 20px 0;
+            text-align: center;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .login-container input[type="text"], .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 80%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
+
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .login-container .signup-button {
+            background-color: #28a745;
+        }
+        .login-container .signup-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_usrname">ID:</label>
+            {{ form.usrname }}
+            {% if form.usrname.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.usrname.errors %}
+                        <strong>{{ error }}</strong><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <br><br>
+            <label for="id_password">비밀번호:</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.password.errors %}
+                        <strong>{{ error }}</strong><br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <br><br>
+            <button type="submit">로그인</button>
+        </form>
+        <button type="button" class="signup-button" onclick="location.href='{% url 'signup' %}'">가입</button>
+    </div>
+</body>
+</html>
