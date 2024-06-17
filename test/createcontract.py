@@ -3,9 +3,12 @@ from datetime import datetime
 import copy 
 
 
-sample = ["서장원", "20020709", "세종시 달빛로 165 803동 1901호", 
+sample = [["서장원", "20020709", "세종시 달빛로 165 803동 1901호", 
           "01041284955", [["충청남도 아산시 탕정면 갈산리 149-1", "지목", "150", "T"],
-                          [ "충청남도 아산시 탕정면 갈산리 150-4", "지목2", "230", "F"]]]
+                          [ "충청남도 아산시 탕정면 갈산리 150-4", "지목2", "230", "F"]]],
+            ["서배석", "19680409", "세종시 달빛로 165 803동 1901호 2", 
+          "01088202525", [["충청남도 아산시 탕정면 갈산리 190", "지목", "190", "T"]]]
+]
  
 table_row = '''
 <tr style="height:22.3pt">
@@ -33,17 +36,29 @@ soup = BeautifulSoup(html_content, 'html.parser')
 row_soup = BeautifulSoup(table_row, 'html.parser')
 now = datetime.now()
 
+def produce_contracts(data_list):
+    for data in data_list:
+        name = data[0]
+        dob = data[1]
+        usradr = data[2]
+        phoneno = data[3]
+        loland = data[4]
+        result_adr = 'results/' + name + '.html'
+        replace_content(name, dob, usradr, phoneno, loland, result_adr)
+        
+
 #loland : list of land, [landadr, 지목, area, bool]
 def replace_content(name, dob, usradr, phoneno, loland, resultno):
-    old_name = soup.find(id="name")
-    name1 = soup.find(id="name1")
-    old_dob = soup.find(id="dob")
-    old_usradr = soup.find(id="usradr")
-    old_phoneno = soup.find(id="phoneno")
-    old_loland = soup.find(id="landtable")
-    year = soup.find(id="year")
-    month = soup.find(id="month")
-    day = soup.find(id="day")
+    soup_copy = copy.copy(soup)
+    old_name = soup_copy.find(id="name")
+    name1 = soup_copy.find(id="name1")
+    old_dob = soup_copy.find(id="dob")
+    old_usradr = soup_copy.find(id="usradr")
+    old_phoneno = soup_copy.find(id="phoneno")
+    old_loland = soup_copy.find(id="landtable")
+    year = soup_copy.find(id="year")
+    month = soup_copy.find(id="month")
+    day = soup_copy.find(id="day")
 
     old_name.string = name
     name1.string = name
@@ -58,7 +73,7 @@ def replace_content(name, dob, usradr, phoneno, loland, resultno):
         old_loland.append(append_row(land))
     # Save the modified HTML back to the file
     with open(resultno, 'w', encoding='utf-8') as file:
-        file.write(soup.prettify())
+        file.write(soup_copy.prettify())
 
 def append_row(land):
     row_soup_copy = copy.copy(row_soup)
@@ -72,8 +87,11 @@ def append_row(land):
     bool.append = land[3]
     return row_soup_copy
 
-        
+'''
 sample_land = [["충청남도 아산시 탕정면 갈산리 149-1", "지목", "150", "T"],
                           [ "충청남도 아산시 탕정면 갈산리 150-4", "지목2", "230", "F"]]
 replace_content("서장원", "19990604", "어디시 저기구 동남동 어디아파트", "01098031012", sample_land, 'result.html')
 
+
+      '''  
+produce_contracts(sample)
