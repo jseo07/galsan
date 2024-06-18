@@ -1,0 +1,57 @@
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Modern Index Page{%endblock%}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(e) {
+            $('.menuicon').click(function(){
+                var element = $('.left');
+                if (element.css('display') === 'none') {
+                    element.css('display', 'flex'); // Ensure the element is visible
+                    setTimeout(function() {
+                        element.css('opacity', 1); // Fade in
+                    }, 10);
+                } else {
+                    element.css('opacity', 0); // Fade out
+                    element.one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
+                        element.css('display', 'none'); // Hide the element after transition
+                    });
+                }                          
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <header>
+        <img class="menuicon" src="{% static 'menu.png' %}" width="28" height="28">
+        <nav>
+            <ul class="auth">
+                <li>{% block login %}<a href="{% url 'app:logout' %}">로그아웃</a>{% endblock %}</li>
+                <li>{% block register %}<a href="{% url 'app:signup' %}"></a>{% endblock %}</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="left">
+                <button class="menu-btn" onclick="location.href='#menu1'">사업 소개</button>
+                <button class="menu-btn" onclick={% block notlogged %}"location.href='{% url 'app:redirect_to_blog' %}'"{% endblock %}>공지사항</button>
+                <button class="menu-btn" onclick={% block notlogged1 %}"location.href='#menu3'"{% endblock %}>조합 운영</button>
+                <button class="menu-btn" onclick={% block notlogged2 %}"location.href='#menu4'"{% endblock %}>진행 현황</button>
+                <button class="menu-btn" onclick={% block notlogged3 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>동의서</button>
+                <button class="menu-btn" onclick={% block notlogged4 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>회의내용</button>
+                <button class="menu-btn" onclick={% block notlogged5 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>자유개시판</button>
+                <button class="menu-btn" onclick={% block notlogged6 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>갤러리</button>
+                <button class="menu-btn" onclick={% block notlogged7 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>연락처</button>
+            </div>
+        </div>
+    </main>
+    {% block content %}{% endblock %}
+</body>
+</html>

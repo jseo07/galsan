@@ -8,13 +8,16 @@ from .models import Usr
 def index(request):
     return render(request, 'index.html')
 
+def logged_index(request):
+    return render(request, 'logged_index.html')
+
 # signup page
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('app:login')
         else:
             print(form.cleaned_data)
             return HttpResponse('form not valid')
@@ -32,9 +35,9 @@ def login(request):
             try:
                 verification = Usr.objects.get(usrname = username)
                 if verification.password == password:
-                    print(verification.password)
-                    print("successful")
-                    return redirect('home')
+                    response = redirect('app:logged_index')
+                    response.set_cookie('logged-in', username)
+                    return response
                 else: 
                     form.add_error(None, "Invalid password.")
                     print(form.errors)
@@ -45,9 +48,16 @@ def login(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
+def notlogged(request):
+     return render(request, 'notlogged.html')
+
 # logout page
 def logout(request):
-    return redirect('login')
-
+    response = redirect('app:home')
+    response.delete_cookie('logged-in')
+    return response
 def agree(request):
     return render(request, 'agree.html')
+
+def redirect_to_blog(request):
+    return redirect('blog:announcement')

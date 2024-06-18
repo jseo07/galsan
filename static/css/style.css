@@ -14,6 +14,18 @@ body {
     color: #333;
 }
 
+.postbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+    position:relative;
+    z-index: 998;
+}
 body::before{
     content: "";
     position: absolute;
@@ -21,28 +33,49 @@ body::before{
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('pexels-apasaric-618079.jpg') no-repeat center center fixed;
+    background: url('background1.jpg') no-repeat center center fixed;
     background-size: cover;
     opacity: 0.5; 
     z-index: -1; 
-
 }
+
 
 header {
     padding: 20px;
+    text-align: right; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    padding: 0 20px;
+    padding-top:15px;
 }
+
+header nav{
+    justify-content: right;
+}
+
+.menuicon{
+    margin-left: 0;
+    cursor: pointer;
+}
+
+
 
 .auth {
     list-style: none;
     display: flex;
     justify-content: flex-start;
     padding-left: 20px;
+    padding-right: 30px;
+    width: 200%;
 }
 
 .auth li {
-    margin-right: 1%;
+    margin-right: 4%;
     margin-left: 1%;
 }
+
 
 a {
     color: black;
@@ -58,20 +91,28 @@ a {
 a:hover {
     color: #0056b3;
 }
-
 .container {
     display: flex;
     height: 80vh;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
+    padding-left: 5%;
+    position:absolute;
+    z-index: 999;
 }
 
 .left {
-    display: flex;
-    flex-direction: column;
+    opacity: 0;
+    display: none;
+    transition: opacity 1s ease-in-out;
+    flex-direction: column; 
     justify-content: center;
     align-items: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 999;
+    position:relative;
 }
 
 .menu-btn {
@@ -123,19 +164,72 @@ a:hover {
   }
 
 .right {
-    display: grid;
+    display:inline-block;
+    width: 100%;
+    height:100%;
     justify-content: center;
     align-items: center;
-    padding-left: 10%;
+    padding: 20px;
+    text-align: center;
+    position:relative;
+    z-index: -1;
 }
 
-h1 {
+.right h1 {
     font-size: 3em;
     color: black;
+    margin-top: 20%;
+
 }
-h2 { 
+.right h3 { 
     font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-style: normal;
     padding-right: 20px;
+    font-size: 1.4em;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+}
+
+.posttitle {
+    margin-bottom: 20px;
+}
+
+.postform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postlabel {
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
+
+input[type="text"], textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    height: 300px;
+}
+.topost{
+    position:relative;
+    padding-top: 70px;
+    z-index: 999;
 }

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}공지사항 작성{% endblock %}
+{% block content %}
+<div class="postbody">
+    <div class="form-container">
+        <h2 class="posttitle">공지사항 작성</h2>
+        <form class="postform" method="post">
+            {% csrf_token %}
+            <label class="postlabel" for="id_title">제목:</label>
+            <input type="text" id="id_title" name="title" value="{{ form.title.value|default_if_none:'' }}">
+            {% if form.title.errors %}
+                <div class="error">{{ form.title.errors }}</div>
+            {% endif %}
+            <br><br>
+
+            <label class="postlabel" for="id_body">내용:</label>
+            <textarea id="id_body" name="body">{{ form.body.value|default_if_none:'' }}</textarea>
+            {% if form.body.errors %}
+                <div class="error">{{ form.body.errors }}</div>
+            {% endif %}
+            <br><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}

@@ -1,37 +1,19 @@
-<!DOCTYPE html>
-{% load static%}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Index Page</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul class="auth">
-                <li><a href="{% url 'login' %}">로그인</a></li>
-                <li><a href="{% url 'signup' %}">가입</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="container">
-            <div class="left">
-                <button class="menu-btn" onclick="location.href='#menu1'">사업 소개</button>
-                <button class="menu-btn" onclick="location.href='#menu2'">공지사항</button>
-                <button class="menu-btn" onclick="location.href='#menu3'">조합 운영</button>
-                <button class="menu-btn" onclick="location.href='#menu4'">진행 현황</button>
-                <button class="menu-btn" onclick="location.href='{% url 'agree' %}'">동의서</button>
-            </div>
-            <div class="right">
-                <h1>저시기 사업</h1>
-                <h3>뭐시기 설명 저시기 설명 저시기 저시기 
-                    이래서 이렇게 할거임
-                </h3>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block login %}<a href="{% url 'app:login' %}">로그인</a>{% endblock %}
+{% block register %}<a href="{% url 'app:signup' %}">가입</a>{% endblock %}
+{% block notlogged %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged1 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged2 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged3 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged4 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged5 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged6 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block notlogged7 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block content %}
+<div class="right">
+    <h1>저시기 사업</h1>
+    <h3>뭐시기 설명 저시기 설명 저시기 저시기 
+        이래서 이렇게 할거임
+    </h3>
+</div>
+{% endblock %}

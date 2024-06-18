@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -54,11 +55,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'galsan.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIR1 = os.path.join(BASE_DIR, '/app/templates')
+TEMPLATE_DIR2 = os.path.join(BASE_DIR, '/blog/templates')
+
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [TEMPLATE_DIR, TEMPLATE_DIR1, TEMPLATE_DIR2],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
