@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
+
+
+body, h1, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('pexels-apasaric-618079.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.5; 
+    z-index: -1; 
+
+}
+
+header {
+    padding: 20px;
+}
+
+.auth {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.auth li {
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:1.4em;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.container {
+    display: flex;
+    height: 80vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.menu-btn {
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 100%;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-size: 1.7em;
+  
+    border: 0;
+    margin-bottom: 28%;
+
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    transition-duration: 0.5s;
+}
+
+
+.menu-btn:hover{
+    background-color: lightgray;
+}
+
+@media (min-width: 768px) {
+    .menu-btn {
+      padding: 0.25em 0.75em;
+    }
+  }
+
+.menu-btn:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+  }
+
+.right {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+}
+
+h1 {
+    font-size: 3em;
+    color: black;
+}
+h2 { 
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-right: 20px;
+}
