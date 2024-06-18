@@ -1,7 +1,26 @@
-
 {% extends 'base.html' %}
 {% block title %}공지사항{% endblock %}
 {% block content %}
-<a class="topost" href="{% url 'blog:post_blog' %}">post</a>
+
+<div class="postspage">
+    <div class="blogheader">
+        <h1>공지사항</h1>
+    </div>
+    <div class="posts_container">
+        <div class="row">
+            {% for post in post_list %}
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.body}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="topost"><a href="{% url 'blog:post_blog' %}">새로운 공지 개시</a></div>
+</div>
+
 {% endblock %}
 

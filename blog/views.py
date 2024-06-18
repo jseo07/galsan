@@ -3,6 +3,8 @@ from .models import Post
 from app.models import Usr
 from django.http import HttpResponse 
 from .forms import PostForm
+from django.views import generic
+
 def announcement(request):
     return render(request, 'announcement.html')
 
@@ -26,3 +28,6 @@ def post_blog(request):
 
     return render(request, 'post.html')
 
+class PostList(generic.ListView):
+    queryset = Post.objects.order_by('-created_on')
+    template_name = 'announcement.html'

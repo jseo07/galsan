@@ -10,8 +10,16 @@ body {
     font-family: 'Black Han Sans', sans-serif;
     font-weight: 400;
     font-style: normal;
-    background-color: #f4f4f4;
     color: #333;
+    background-image: url('background1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body::before{
+    opacity:0.6;
 }
 
 .postbody{
@@ -24,61 +32,52 @@ body {
     font-style: normal;
     font-size: 1.4em;
     position:relative;
-    z-index: 998;
-}
-body::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('background1.jpg') no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0.5; 
-    z-index: -1; 
 }
 
-
+.postspage{
+    display:inline-block;
+    justify-content: center;
+    align-items: center;
+}
 header {
     padding: 20px;
-    text-align: right; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 20px;
-    padding: 0 20px;
+    width: 100%;
     padding-top:15px;
+    position:fixed;
+    z-index: 999;
+    background-color: #0047ab;
 }
 
 header nav{
+    display: flex;
+    text-align: center;
     justify-content: right;
+    width: 100%;
 }
 
 .menuicon{
     margin-left: 0;
+    margin-top: 4;
     cursor: pointer;
+
 }
 
 
 
 .auth {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 20px;
-    padding-right: 30px;
-    width: 200%;
-}
-
-.auth li {
-    margin-right: 4%;
-    margin-left: 1%;
+    margin-top: 7px;
+    display: grid;
+    grid-template-columns:100px 100px;
+    padding: 25px;
 }
 
 
-a {
-    color: black;
+.auth a {
+    color: white;
     text-decoration: none;
     font-size: 1.1em;
     transition: color 0.3s ease;
@@ -89,7 +88,7 @@ a {
 }
 
 a:hover {
-    color: #0056b3;
+    color:darksalmon;
 }
 .container {
     display: flex;
@@ -99,7 +98,6 @@ a:hover {
     align-items: left;
     padding-left: 5%;
     position:absolute;
-    z-index: 999;
 }
 
 .left {
@@ -111,14 +109,10 @@ a:hover {
     align-items: flex-start;
     padding-left: 20px;
     padding-right: 20px;
-    z-index: 999;
     position:relative;
 }
 
 .menu-btn {
-    font-family: 'Black Han Sans', sans-serif;
-    font-weight: 400;
-    font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +129,7 @@ a:hover {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    font-size: 1.7em;
+    font-size: 1.5em;
   
     border: 0;
     margin-bottom: 28%;
@@ -144,6 +138,7 @@ a:hover {
     font-weight: 400;
     font-style: normal;
     transition-duration: 0.5s;
+    z-index: 999;
 }
 
 
@@ -175,6 +170,64 @@ a:hover {
     z-index: -1;
 }
 
+.blogheader{
+    display:inline-block;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top:80px;
+    text-align: center;
+    position:relative;
+    z-index: -1;
+    
+}
+
+.blogheader h1{
+    font-size: 3em;
+    color: white;
+    font-weight: 100;
+}
+
+.blogheader h3{
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-right: 20px;
+    font-size: 1.4em; 
+    margin-bottom:5%;
+}
+
+.card{
+    display: block;
+}
+.posts_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    padding: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.card-body{
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body p{
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .right h1 {
     font-size: 3em;
     color: black;
@@ -187,6 +240,10 @@ a:hover {
     font-style: normal;
     padding-right: 20px;
     font-size: 1.4em;
+}
+
+.right posts{
+    margin-top:5%;
 }
 
 .form-container {
@@ -203,10 +260,16 @@ a:hover {
     margin-bottom: 20px;
 }
 
+.masthead{
+    display:block;
+    z-index: 999;}
+
+
 .postform {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 999;
 }
 
 .postlabel {
@@ -230,6 +293,50 @@ textarea {
 }
 .topost{
     position:relative;
-    padding-top: 70px;
     z-index: 999;
+    text-align: center;
+    padding: 60px;
+}
+
+#id_body{
+    margin-bottom: 0px;
+}
+.topost a{
+    background-color: white;
+    padding: 30px;
+    margin: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size:1.4em;
+    transition-duration: 0.5s;
+}
+.topost a:hover{
+    background-color: darkgray;
+}
+.form-container button{
+    background-color: black;
+    padding: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size:1em;
+    transition-duration: 0.5s;
+}
+
+.form-container button:hover{
+    background-color: darkgray;
 }
