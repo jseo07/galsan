@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}홈페이지{% endblock %}
+{% block login %}<a href="{% url 'app:login' %}">로그인</a>{% endblock %}
+{% block register %}<a href="{% url 'app:signup' %}">가입</a>{% endblock %}
+{% block title %} 비회원 {% endblock %}
 {% block content %}
-로그인 안됨
+<script type="text/javascript">
+    function showPopupAndRedirect() {
+        setTimeout(function() {
+            window.location.href = "{% url 'app:login' %}";
+        }, 2000); // Redirect after 2 seconds
+    }
+    window.onload = showPopupAndRedirect;
+</script>
+
+<div style="text-align: center; padding: 20px; padding-top: 150px;">
+    <h1 style="font-family: 'Do Hyeon', sans-serif; font-size:3em; font-weight: 200; color: black;">비회원이 접근할수 없습니다.</h1>
+    <p style="font-family: 'Do Hyeon', sans-serif; font-size:2em; font-weight: 200; color: black;">잠시후 로그인페이지로 이동합니다..</p>
+    
+</div>
 {% endblock %}

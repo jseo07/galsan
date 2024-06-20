@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignupForm, LoginForm
 from django.http import HttpResponse
 from .models import Usr
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -51,6 +52,7 @@ def login(request):
 def notlogged(request):
      return render(request, 'notlogged.html')
 
+
 # logout page
 def logout(request):
     response = redirect('app:home')
@@ -61,3 +63,6 @@ def agree(request):
 
 def redirect_to_blog(request):
     return redirect('blog:announcement')
+
+def redirect_to_post(request):
+    return redirect('blog:post_blog')

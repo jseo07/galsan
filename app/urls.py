@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('agree/', views.agree, name='agree'),
     path('redirect_to_blog/', views.redirect_to_blog, name='redirect_to_blog'),
+    path('redirect_to_post/', views.redirect_to_post, name='redirect_to_post'),
 ]

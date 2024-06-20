@@ -28,6 +28,20 @@ def post_blog(request):
 
     return render(request, 'post.html')
 
-class PostList(generic.ListView):
+def meeting_log(request):
+    return render(request, 'meeting_log.html')
+
+def free_posts(request):
+    return render(request, 'free_posts.html')
+
+class PostListAnnouncement(generic.ListView):
     queryset = Post.objects.order_by('-created_on')
     template_name = 'announcement.html'
+
+class PostListMeetingLog(generic.ListView):
+    queryset = Post.objects.order_by('-created_on')
+    template_name = 'meeting_log.html'
+
+class PostListFreePosts(generic.ListView):
+    queryset = Post.objects.order_by('-created_on')
+    template_name = 'free_posts.html'

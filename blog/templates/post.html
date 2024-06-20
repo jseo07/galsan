@@ -3,7 +3,7 @@
 {% block content %}
 <div class="postbody">
     <div class="form-container">
-        <h2 class="posttitle">공지사항 작성</h2>
+        <h2 class="posttitle">글쓰기</h2>
         <form class="postform" method="post">
             {% csrf_token %}
             <label class="postlabel" for="id_title">제목:</label>
@@ -20,6 +20,19 @@
             {% endif %}
             <br><br>
             
+            <div class="category_choice">
+                <label class="postlabel" id="category_title" for="id_category">종류:</label>
+                <select id="id_category" name="category">
+                    <option value="announcement">공지사항</option>
+                    <option value="meeting_log">회의내용</option>
+                    <option value="free_post">자유개시판</option>
+                </select>
+                {% if form.category.errors %}
+                    <div class="error">{{ form.category.errors }}</div>
+                {% endif %}
+                <br><br>
+            </div>
+
             <button type="submit">재출</button>
         </form>
     </div>

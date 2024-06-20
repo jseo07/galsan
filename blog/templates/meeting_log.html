@@ -1,0 +1,29 @@
+{% extends 'post_base.html' %}
+{% block posttype %}회의 내용{% endblock %}
+{% block postcontent %}
+<div class="posts_container">
+    <div class="row">
+        <div class="card m" style="display: block;">
+            <div class="card-body" style="text-align: center;">
+                <h2 class="card-title">개시물이 없습니다</h2>
+            </div>
+        </div>
+            {% for post in post_list %}
+                {% if post.category == "meeting_log" %}
+                    <script>
+                        document.getElementsByClassName('card m')[0].style.display = 'none';
+                    </script>
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                            <p class="card-text">{{post.body}}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+    </div>
+</div>
+<div class="topost"><a href="{% url 'blog:post_blog' %}">글쓰기</a></div>
+</div>
+{% endblock %}
