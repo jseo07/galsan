@@ -1,11 +1,12 @@
 {% extends 'post_base.html' %}
-{% block posttype %}자유개시판{% endblock %}
+{% load static %}
+{% block posttype %}자유게시판{% endblock %}
 {% block postcontent %}
 <div class="posts_container">
     <div class="row">
         <div class="card m" style="display: block;">
             <div class="card-body" style="text-align: center;">
-                <h2 class="card-title">개시물이 없습니다</h2>
+                <h2 class="card-title">게시물이 없습니다</h2>
             </div>
         </div>
             {% for post in post_list %}
@@ -18,6 +19,11 @@
                             <h2 class="card-title">{{ post.title }}</h2>
                             <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
                             <p class="card-text">{{post.body}}</p>
+                        </div>
+                        
+                        <div class="posticons">
+                            <a href="{% url 'blog:edit_post' author=post.author created_on=post.created_on %}"><img class="editicon" src="{% static 'edit.png' %}" width="28" height="28"></a>
+                            <a href="{% url 'blog:delete_post' author=post.author created_on=post.created_on %}"><img class="deleteicon" src="{% static 'delete.png' %}" width="28" height="28"></a>
                         </div>
                     </div>
                 {% endif %}

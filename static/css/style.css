@@ -145,16 +145,16 @@ a:hover {
     display: none;
     transition: opacity 1s ease-in-out;
     flex-direction: column; 
-    justify-content: center;
     align-items: flex-start;
     padding-left: 20px;
     height: 100%;
-    top:0;
+    top:75px;
     left:0;
+    margin-bottom:50px;
     padding-right: 20px;
     position: fixed; 
     overflow-x:hidden;
-
+    z-index: 999;
 }
 
 .menu-btn {
@@ -247,15 +247,44 @@ a:hover {
 .card{
     display: block;
 }
+
+.card-title{
+    display: flex;
+    align-items: center;
+}
 .posts_container{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
 }
 .row{
     width: 100%;
 }
+
+.posticons{
+    padding-top:10px;
+    display: flex;
+    justify-content: right;
+}
+
+.posticons a{
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    transition: background-color 0.5s; 
+    cursor:pointer;
+    z-index: 999;
+}
+
+.posticons a:hover{
+    background-color: gray;
+    border: 0px;
+}
+
 .card{
     padding: 20px;
     padding-left: 10%;

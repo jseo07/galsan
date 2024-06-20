@@ -3,18 +3,18 @@
 {% block content %}
 <div class="postbody">
     <div class="form-container">
-        <h2 class="posttitle">글쓰기</h2>
+        <h2 class="posttitle">{% block rorw %}글쓰기{% endblock %}</h2>
         <form class="postform" method="post">
             {% csrf_token %}
             <label class="postlabel" for="id_title">제목:</label>
-            <input type="text" id="id_title" name="title" value="{{ form.title.value|default_if_none:'' }}">
+            <input type="text" id="id_title" name="title" value="{% block edittitle %}{{ form.title.value|default_if_none:'' }}{% endblock %}">
             {% if form.title.errors %}
                 <div class="error">{{ form.title.errors }}</div>
             {% endif %}
             <br><br>
 
             <label class="postlabel" for="id_body">내용:</label>
-            <textarea id="id_body" name="body">{{ form.body.value|default_if_none:'' }}</textarea>
+            <textarea id="id_body" name="body">{% block editbody %}{% endblock %}{{ form.body.value|default_if_none:'' }}</textarea>
             {% if form.body.errors %}
                 <div class="error">{{ form.body.errors }}</div>
             {% endif %}
@@ -25,7 +25,7 @@
                 <select id="id_category" name="category">
                     <option value="announcement">공지사항</option>
                     <option value="meeting_log">회의내용</option>
-                    <option value="free_post">자유개시판</option>
+                    <option value="free_post">자유게시판</option>
                 </select>
                 {% if form.category.errors %}
                     <div class="error">{{ form.category.errors }}</div>
