@@ -1,14 +1,8 @@
 from bs4 import BeautifulSoup
 from datetime import datetime
 import copy 
-
-
-sample = [["서장원", "20020709", "세종시 달빛로 165 803동 1901호", 
-          "01041284955", [["충청남도 아산시 탕정면 갈산리 149-1", "지목", "150", "T"],
-                          [ "충청남도 아산시 탕정면 갈산리 150-4", "지목2", "230", "F"]]],
-            ["서배석", "19680409", "세종시 달빛로 165 803동 1901호 2", 
-          "01088202525", [["충청남도 아산시 탕정면 갈산리 190", "지목", "190", "T"]]]
-]
+import clean_data
+import csv
  
 table_row = '''
 <tr style="height:22.3pt">
@@ -38,11 +32,11 @@ now = datetime.now()
 
 def produce_contracts(data_list):
     for data in data_list:
-        name = data[0]
-        dob = data[1]
-        usradr = data[2]
-        phoneno = data[3]
-        loland = data[4]
+        name = data['name']
+        dob = data['dob']
+        usradr = data['adr']
+        phoneno = '010'
+        loland = data['loland']
         result_adr = 'results/' + name + '.html'
         replace_content(name, dob, usradr, phoneno, loland, result_adr)
         
@@ -81,10 +75,10 @@ def append_row(land):
     jimok = row_soup_copy.find(id="jimok")
     area = row_soup_copy.find(id="area")
     bool = row_soup_copy.find(id="bool")
-    landadr.string = land[0]
-    jimok.string = land[1]
-    area.string = land[2]
-    bool.append = land[3]
+    landadr.string = '갈산리 ' + land['str_adr']
+    jimok.string = land['category']
+    area.string = land['area']
+    bool.append = ''
     return row_soup_copy
 
 '''
@@ -94,4 +88,22 @@ replace_content("서장원", "19990604", "어디시 저기구 동남동 어디�
 
 
       '''  
-produce_contracts(sample)
+
+def main():
+    file = open('/Users/tjwkd/Documents/projects/galsan/test/land_info.csv', "r", encoding='UTF8')
+    data = list(csv.reader(file, delimiter=","))
+    file.close()
+
+    del data[-1]
+    for item in data:
+        name = item[3].replace(" ", "")
+        name = name.replace("\n", "")
+        if len(name) > 3:
+            if name[3] == '외':
+                name = name[0:3]
+        item[3] = name
+        del item[-1]
+    final = clean_data.fill_final_list(data)
+    produce_contracts(final)
+
+main()
