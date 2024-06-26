@@ -10,7 +10,10 @@ def index(request):
     return render(request, 'index.html')
 
 def logged_index(request):
-    return render(request, 'logged_index.html')
+    if request.COOKIES.get('logged-in'):
+        return render(request, 'logged_index.html')
+    else:
+        return render(request, 'index.html')
 
 # signup page
 def signup(request):

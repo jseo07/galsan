@@ -28,24 +28,25 @@
 
 </head>
 <body>
+    <img class="homeicon" src="{% static 'homeicon.png' %}" onclick="location.href='{% url 'app:logged_index' %}'"  width="32" height="32">
     <header>
         <img class="menuicon" src="{% static 'menu.png' %}" width="28" height="28">
         <nav>
             <ul class="auth">
-                <li>{% block login %}<a href="{% url 'app:logout' %}">로그아웃</a>{% endblock %}</li>
                 <li>{% block register %}<a href="{% url 'app:signup' %}"></a>{% endblock %}</li>
+                <li>{% block login %}<a href="{% url 'app:logout' %}">로그아웃</a>{% endblock %}</li>
             </ul>
         </nav>
     </header>
     <main>
         <div class="container">
             <div class="left">
-                <button class="menu-btn" onclick="location.href='#menu1'">사업 소개</button>
-                <button class="menu-btn" onclick={% block notlogged1 %}"location.href='#menu3'"{% endblock %}>조합 운영</button>
-                <button class="menu-btn" onclick={% block notlogged2 %}"location.href='#menu4'"{% endblock %}>진행 현황</button>
-                <button class="menu-btn" onclick={% block notlogged %}"location.href='{% url 'app:redirect_to_blog' %}'"{% endblock %}>개시판</button>
-                <button class="menu-btn" onclick={% block notlogged6 %}"location.href='{% url 'app:redirect_to_post' %}'"{% endblock %}>글쓰기</button>
-                <button class="menu-btn" onclick={% block notlogged7 %}"location.href='{% url 'app:agree' %}'"{% endblock %}>연락처</button>
+                <button class="menu-btn" onclick="location.href='#menu1'"><b>사업 소개</b></button>
+                <button class="menu-btn" onclick={% block notlogged2 %}"location.href='{% url 'blog:announcement' %}'"{% endblock %}><b>진행 현황</b></button>
+                <button class="menu-btn" onclick={% block notlogged %}"location.href='{% url 'blog:meeting_log' %}'"{% endblock %}><b>게시판</b></button>
+                <button class="menu-btn" onclick={% block notlogged6 %}"location.href='{% url 'app:redirect_to_post' %}'"{% endblock %}><b>글쓰기</b></button>
+                <button class="menu-btn" onclick={% block notlogged3 %}"location.href='{% url 'app:agree' %}'"{% endblock %}><b>동의서</b></button>
+                <button class="menu-btn" onclick={% block notlogged7 %}"location.href='{% url 'app:agree' %}'"{% endblock %}><b>연락처</b></button>
             </div>
         </div>
     </main>

@@ -4,13 +4,14 @@
 
 <div class="postspage">
     <div class="blogheader">
-        <h1>{% block posttype %}{% endblock %}</h1>
+        <h1><b>{% block posttype %}{% endblock %}</b></h1>
     </div>
+    {% block blogchoice %}
     <div class="blogchoice">
-        <a href="{% url 'blog:announcement' %}" {% block style_announcement %}{% endblock %}>| 공지사항 |</a>
-        <a href="{% url 'blog:meeting_log' %}" {% block style_meeting_log %}{% endblock %}>| 회의 내용 |</a>
-        <a href="{% url 'blog:free_posts' %}" {% block style_free_post %}{% endblock %}>| 자유게시판 |</a>
+        <a href="{% url 'blog:meeting_log' %}" {% block style_meeting_log %}{% endblock %}><b>| 회의 내용 |</b></a>
+        <a href="{% url 'blog:free_posts' %}" {% block style_free_post %}{% endblock %}><b>| 자유게시판 |</b></a>
     </div>
+    {% endblock %}
     {% block postcontent %}{% endblock %}
 
 {% endblock %}
