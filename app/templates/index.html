@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
-{% block login %}<a href="{% url 'app:login' %}">로그인</a>{% endblock %}
-{% block register %}<a href="{% url 'app:signup' %}">가입</a>{% endblock %}
-{% block notlogged %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged1 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged2 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged3 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged4 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged5 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged6 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
-{% block notlogged7 %}"location.href='{% url 'app:notlogged' %}'"{% endblock %}
+{% block login %}<li><a href="{% url 'app:login' %}">로그인</a></li>{% endblock %}
+{% block logout %}<a href="{% block notlogged10 %}{% url 'app:login' %}{% endblock %}">로그인</a>{% endblock %}
+{% block home %}"{% url 'app:home' %}"{% endblock %}
+{% block notlogged %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged1 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged2 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged3 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged4 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged5 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged6 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged7 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged8 %}{% url 'app:notlogged' %}{% endblock %}
+{% block notlogged9 %}{% url 'app:notlogged' %}{% endblock %}
 {% block content %}
 <div class="right">
     <h1>거시기 개발사업</h1>

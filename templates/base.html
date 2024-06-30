@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Modern Index Page{%endblock%}</title>
+    <title>{% block title %}거시기 개발사업{%endblock%}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
     <script>
-        $(document).ready(function(e) {
+         $(document).ready(function(e) {
             $('.menuicon').click(function(){
                 var element = $('.left');
                 if (element.css('display') === 'none') {
-                    element.css('display', 'flex'); // Ensure the element is visible
-                    setTimeout(function() {
-                        element.css('opacity', 1); // Fade in
-                    }, 10);
+                    element.css('display', 'grid'); // Ensure the element is visible
                 } else {
-                    element.css('opacity', 0); // Fade out
-                    element.one('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function() {
-                        element.css('display', 'none'); // Hide the element after transition
-                    });
+                    element.css('display', 'none'); // Hide the element after transition
                 }                          
             });
         });
@@ -28,25 +22,29 @@
 
 </head>
 <body>
-    <img class="homeicon" src="{% static 'homeicon.png' %}" onclick="location.href='{% url 'app:logged_index' %}'"  width="32" height="32">
-    <header>
-        <img class="menuicon" src="{% static 'menu.png' %}" width="28" height="28">
-        <nav>
-            <ul class="auth">
-                <li>{% block register %}<a href="{% url 'app:signup' %}"></a>{% endblock %}</li>
-                <li>{% block login %}<a href="{% url 'app:logout' %}">로그아웃</a>{% endblock %}</li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+    <nav class="header">
+        <a id="homelink" href={% block home %}"{% url 'app:logged_index' %}"{% endblock %}>뭐시기 개발사업</a>
+        <ul class="list">
+          <li><a href="#">사업소개</a></li>
+          <li><a href="{% block notlogged %}{% url 'blog:announcement' %}{% endblock %}">진행현황</a></li>
+          <li><a href="{% block notlogged1 %}{% url 'blog:meeting_log' %}{% endblock %}">게시판</a></li>
+          <li><a href="{% block notlogged2 %}{% url 'app:redirect_to_post' %}{% endblock %}">글쓰기</a></li>
+          <li><a href="{% block notlogged3 %}{% url 'app:agree' %}{% endblock %}">동의서</a></li>
+          <li><a href="{% block notlogged4 %}{% url 'app:agree' %}{% endblock %}">연락처</a></li>
+          {% block login %}<li><a href="{% url 'app:logout' %}">로그아웃</a></li>{% endblock %}
+        </ul>
+        <button class="menuicon">Menu</button>
+      </nav>
+      <main>
         <div class="container">
             <div class="left">
-                <button class="menu-btn" onclick="location.href='#menu1'"><b>사업 소개</b></button>
-                <button class="menu-btn" onclick={% block notlogged2 %}"location.href='{% url 'blog:announcement' %}'"{% endblock %}><b>진행 현황</b></button>
-                <button class="menu-btn" onclick={% block notlogged %}"location.href='{% url 'blog:meeting_log' %}'"{% endblock %}><b>게시판</b></button>
-                <button class="menu-btn" onclick={% block notlogged6 %}"location.href='{% url 'app:redirect_to_post' %}'"{% endblock %}><b>글쓰기</b></button>
-                <button class="menu-btn" onclick={% block notlogged3 %}"location.href='{% url 'app:agree' %}'"{% endblock %}><b>동의서</b></button>
-                <button class="menu-btn" onclick={% block notlogged7 %}"location.href='{% url 'app:agree' %}'"{% endblock %}><b>연락처</b></button>
+                <a href="#">사업소개</a>
+                <a href="{% block notlogged5 %}{% url 'blog:announcement' %}{% endblock %}">진행현황</a>
+                <a href="{% block notlogged6 %}{% url 'blog:meeting_log' %}{% endblock %}">게시판</a>
+                <a href="{% block notlogged7 %}{% url 'app:redirect_to_post' %}{% endblock %}">글쓰기</a>
+                <a href="{% block notlogged8 %}{% url 'app:agree' %}{% endblock %}">동의서</a>
+                <a href="{% block notlogged9 %}{% url 'app:agree' %}{% endblock %}">연락처</a>
+                {% block logout %}<a href="{% block notlogged10 %}{% url 'app:logout' %}{% endblock %}">로그아웃</a>{% endblock %}
             </div>
         </div>
     </main>
